@@ -1,0 +1,32 @@
+@use "src/theme" as t;
+
+:host {
+  display: block;
+  padding: 1rem;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  text-align: left;
+
+  fieldset {
+    border: 2px solid t.$secondary;
+    border-radius: t.$border-radius;
+  }
+
+  p {
+    font-size: 1.1rem;
+  }
+
+  &:hover,
+  &:focus {
+    fieldset {
+      border: 2px solid t.$primary;
+      background-color: adjust-color(t.$secondary, $lightness: -4%);
+      cursor: pointer;
+    }
+    outline: none;
+  }
+}

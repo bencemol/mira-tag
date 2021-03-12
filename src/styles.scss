@@ -1,1 +1,58 @@
-/* You can add global styles to this file, and also import other style files */
+@use "src/theme" as t;
+
+html,
+body {
+  font-family: Helvetica, sans-serif;
+  background-color: t.$background;
+  * {
+    color: t.$primary;
+  }
+}
+
+.card {
+  padding: t.$padding;
+  border-radius: t.$border-radius;
+  background-color: t.$secondary;
+}
+
+.d-flex {
+  display: flex;
+
+  &.space-between {
+    justify-content: space-between;
+  }
+}
+
+.m-auto {
+  margin: auto;
+}
+
+button {
+  height: max-content;
+  padding: 1.2 * t.$padding t.$padding;
+  background-color: t.$secondary;
+  border: none;
+  border-radius: t.$border-radius;
+  &:hover,
+  &:focus {
+    background-color: adjust-color(t.$secondary, $lightness: -4%);
+    cursor: pointer;
+  }
+  &:disabled {
+    opacity: 40%;
+    cursor: not-allowed;
+  }
+}
+
+input {
+  font-size: 1.1rem;
+  padding: 1.2 * t.$padding t.$padding;
+  background-color: t.$secondary;
+  border: 2px solid transparent;
+  border-radius: t.$border-radius;
+  &:focus {
+    background-color: adjust-color(t.$secondary, $lightness: -4%);
+    border: 2px solid t.$primary;
+    outline: none;
+  }
+}

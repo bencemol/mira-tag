@@ -1,0 +1,24 @@
+<main>
+  <section class="d-flex space-between">
+    <button [disabled]="current < 1" (click)="prevExample()">PREV</button>
+    <div class="card user-action">{{ (example$ | async)?.text }}</div>
+    <button [disabled]="current >= size - 1" (click)="nextExample()">
+      NEXT
+    </button>
+  </section>
+  <form class="suggestions" (submit)="onSubmit($event)">
+    <app-select-label
+      class="m-auto"
+      [labels]="labels$ | async"
+    ></app-select-label>
+    <ul class="suggestions" (keydown)="onKeydown($event)">
+      <li *ngFor="let suggestion of (example$ | async)?.similar">
+        <app-suggestion
+          class="m-auto"
+          [suggestion]="suggestion"
+          (tag)="onTag(suggestion.label.idx)"
+        ></app-suggestion>
+      </li>
+    </ul>
+  </form>
+</main>
