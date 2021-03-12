@@ -1,4 +1,5 @@
 import {
+  AfterContentInit,
   AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -35,7 +36,7 @@ function generateLabels(n: number): Label[] {
   styleUrls: ['./tag.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TagComponent implements OnInit, AfterViewInit {
+export class TagComponent implements OnInit {
   dummyExample: Exmaple = {
     text: 'USER ACTION',
     label: {
@@ -76,21 +77,22 @@ export class TagComponent implements OnInit, AfterViewInit {
       this.current = Number(params.get('id'));
       this.example$ = this.api.getExample(this.current).pipe(
         share(),
-        tap(() => this.ngAfterViewInit())
+        tap(() => this.initFocus())
       );
       this.changeDetectoRef.markForCheck();
     });
   }
 
-  ngAfterViewInit(): void {
-    console.log((document.querySelector('app-suggestion')?.firstChild));
-    (document.querySelector('app-suggestion')
-      ?.firstChild as HTMLElement)?.focus();
-    this.suggestionElements = Array.from(
-      document.querySelectorAll('app-suggestion')
-    );
-    this.selectLabelElement = document.querySelector('app-select-label')
-      ?.firstElementChild as HTMLInputElement;
+  initFocus(): void {
+    setTimeout(() => {
+      (document.querySelector('app-suggestion')
+        ?.firstChild as HTMLElement)?.focus();
+      this.suggestionElements = Array.from(
+        document.querySelectorAll('app-suggestion')
+      );
+      this.selectLabelElement = document.querySelector('app-select-label')
+        ?.firstElementChild as HTMLInputElement;
+    });
   }
 
   nextExample(): void {

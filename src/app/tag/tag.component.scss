@@ -24,8 +24,9 @@ main {
   flex-direction: column;
   list-style: decimal;
   list-style-position: inside;
+  white-space: nowrap;
 
-  li>*,
+  li > *,
   li::marker {
     display: inline-block;
     vertical-align: middle;
