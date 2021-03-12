@@ -77,13 +77,14 @@ export class TagComponent implements OnInit {
       this.current = Number(params.get('id'));
       this.example$ = this.api.getExample(this.current).pipe(
         share(),
-        tap(() => this.initFocus())
+        tap(() => this.initFocus()),
+        tap(() => this.initHighlight())
       );
       this.changeDetectoRef.markForCheck();
     });
   }
 
-  initFocus(): void {
+  private initFocus(): void {
     setTimeout(() => {
       (document.querySelector('app-suggestion')
         ?.firstChild as HTMLElement)?.focus();
@@ -95,7 +96,7 @@ export class TagComponent implements OnInit {
     });
   }
 
-  initHighlight(): void {
+  private initHighlight(): void {
     setTimeout(() => {
       (document.querySelector('li.selected') as HTMLElement).classList.add(
         'active'
