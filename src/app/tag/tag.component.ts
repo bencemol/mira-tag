@@ -95,6 +95,14 @@ export class TagComponent implements OnInit {
     });
   }
 
+  initHighlight(): void {
+    setTimeout(() => {
+      (document.querySelector('li.selected') as HTMLElement).classList.add(
+        'active'
+      );
+    });
+  }
+
   nextExample(): void {
     if (this.current < this.size - 1) {
       this.router.navigate([`${this.current + 1}`]);

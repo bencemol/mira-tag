@@ -1,6 +1,11 @@
-<button type="button" (click)="tag.emit($event)">
+<button
+  type="button"
+  (click)="tag.emit($event)"
+>
   <fieldset>
-    <legend>{{ (suggestion.score).toFixed(2) }}% - {{ suggestion.label.name }}</legend>
+    <legend>
+      {{ suggestion.score.toFixed(2) }}% - {{ suggestion.label.name }}
+    </legend>
     <p>{{ suggestion.text }}</p>
   </fieldset>
 </button>

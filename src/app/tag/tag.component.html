@@ -10,9 +10,17 @@
     <app-select-label
       class="m-auto"
       [labels]="labels$ | async"
+      [value]="(example$ | async)?.label?.name"
     ></app-select-label>
-    <ul class="suggestions" (keydown)="onKeydown($event)">
-      <li *ngFor="let suggestion of (example$ | async)?.similar">
+    <ul
+      class="suggestions"
+      *ngIf="example$ | async as example"
+      (keydown)="onKeydown($event)"
+    >
+      <li
+        *ngFor="let suggestion of example?.similar"
+        [ngClass]="{ selected: example?.label?.idx === suggestion.label?.idx }"
+      >
         <app-suggestion
           class="m-auto"
           [suggestion]="suggestion"

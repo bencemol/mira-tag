@@ -1,4 +1,10 @@
-<input list="labels" id="label" (input)="onChange($event)" autocomplete="off"/>
+<input
+  list="labels"
+  id="label"
+  (input)="onChange($event)"
+  [value]="value"
+  autocomplete="off"
+/>
 <datalist id="labels">
   <option
     *ngFor="let label of labels"

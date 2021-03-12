@@ -11,6 +11,9 @@ export class SelectLabelComponent {
   @Input()
   labels: Label[];
 
+  @Input()
+  value: string;
+
   onChange($event: Event): void {
     const input = $event.target as HTMLInputElement;
     const datalist = input.list as HTMLDataListElement;

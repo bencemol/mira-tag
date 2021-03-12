@@ -36,3 +36,11 @@ main {
     font-size: 1.2rem;
   }
 }
+
+:host::ng-deep {
+  li.selected.active {
+    button fieldset {
+      border-color: t.$highlight;
+    }
+  }
+}
