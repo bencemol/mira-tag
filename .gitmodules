@@ -1,0 +1,3 @@
+[submodule "useraction-labeler"]
+	path = useraction-labeler
+	url = https://bitbucket.talkabot.net/scm/pyt/useraction-labeler.git
